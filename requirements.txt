@@ -1,8 +1,8 @@
 tensorflow==2.12.0
 streamlit==1.21.0
-numpy==1.23.5
-pandas==1.5.3
-yfinance==0.2.16
+numpy==1.24.3
+pandas==2.0.1
+yfinance==0.2.18
 matplotlib==3.7.1
 keras==2.12.0
 sklearn==0.0.post1
