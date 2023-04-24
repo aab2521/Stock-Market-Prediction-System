@@ -17,7 +17,7 @@ st.title(':green[MarketProphet: Stock Market Prediction System]')
 st.caption('Time Series Analysis Using stacked LSTM')
 with st.sidebar:
     user_input = st.text_input('Enter Stock Ticker','AAPL')
-    d1 = st.date_input("Enter the Lower Cutoff Date", datetime.date(2019, 1, 1))
+    d1 = st.date_input("Enter the Lower Cutoff Date",datetime.date(2019, 1, 1))
     d2 = st.date_input("Enter the Higher Cutoff Date")
 st.caption('Showing Data For:')
 st.subheader(user_input)
@@ -102,7 +102,7 @@ model = models.load_model('keras_model1.h5')
 
 #Testing Part
 past_100_days = data_training.tail(100)
-final_df = past_100_days.append(data_testing, ignore_index=True)
+final_df = past_100_days._append(data_testing, ignore_index=True)
 input_data = scaler.fit_transform(final_df)
 
 x_test =[]
@@ -112,10 +112,17 @@ for i in range(100, input_data.shape[0]):
     x_test.append(input_data[i-100: i])
     y_test.append(input_data[i, 0])
 
+#Predicting the plot
 x_test, y_test = np.array(x_test), np.array(y_test)
 y_predicted = model.predict(x_test)
+print(y_predicted)
+
+
 
 scaler = scaler.scale_
+print()
+print(type(scaler))
+print(scaler)
 
 scale_factor = 1/scaler[0]
 y_predicted = y_predicted * scale_factor
@@ -150,4 +157,3 @@ plt.ylabel('Price')
 plt.legend()
 # plt.show()
 st.pyplot(fig2)
-
